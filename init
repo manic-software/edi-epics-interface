@@ -1,0 +1,47 @@
+#!/bin/sh
+# $Id: edi.init,v 0.0 2012/02/20 20:38:30 matt robinson Exp $
+#
+# chkconfig: 2345 70 40
+# description: edi startup script
+#
+EDID=/usr/sbin/edid
+
+. /etc/rc.d/init.d/functions
+[ -e /etc/sysconfig/edi ] && . /etc/sysconfig/edi
+
+RETVAL=0
+
+case "$1" in
+   start)
+      echo -n "Starting EDI: "
+      [ -f $EDID ] || exit 1
+      daemon --user $EDI_USER $EDID
+      sleep 5
+      RETVAL=$?
+      [ $RETVAL -eq 0 ] && touch /var/lock/subsys/edid
+      echo
+	;;
+
+  stop)
+      echo -n "Shutting down EDI: "
+      killproc edid
+      RETVAL=$?
+      echo
+      [ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/edid
+	;;
+
+  restart|reload)
+   	$0 stop
+   	$0 start
+   	RETVAL=$?
+	;;
+  status)
+   	status edid
+   	RETVAL=$?
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart|status}"
+	exit 1
+esac
+
+exit $RETVAL

@@ -1,0 +1,12 @@
+#you can add as many servers as you like in the form
+# 'server1:port1 server1:port2 server2:port1'
+# EPICS_CA_ADDR_LIST='localhost:5060 localhost:5061 localhost:5062 localhost:5063 localhost:5064 localhost:5065 localhost:5066'
+#set to yes to tell epics to scan local subnet 
+EPICS_CA_AUTO_ADDRESS_LIST=yes
+#port to which channel access client should connect (defaults to 5064)
+EPICS_CA_SERVER_PORT=5064
+#port on which channel server should listen (defaults to EPICS_CA_SERVER_PORT)
+EPICS_CAS_SERVER_PORT=5064
+
+#run as this user 
+EDI_USER=epics

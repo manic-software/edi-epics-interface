@@ -1,0 +1,5 @@
+QT_CXXFLAGS:=-pipe -O2 -Wall -W -D_REENTRANT  $(DEFINES)
+QT_INCPATH:=-I/usr/lib/qt4/mkspecs/linux-g++  -I/usr/lib/qt4/include/QtCore -I/usr/lib/qt4/include/QtNetwork -I/usr/lib/qt4/include/QtGui -I/usr/lib/qt4/include/QtSql -I/usr/lib/qt4/include 
+QT_INCDEP:=-isystem /usr/lib/qt4/mkspecs/linux-g++  -isystem /usr/lib/qt4/include/QtCore -isystem /usr/lib/qt4/include/QtNetwork -isystem /usr/lib/qt4/include/QtGui -isystem /usr/lib/qt4/include/QtSql -isystem /usr/lib/qt4/include 
+QT_LFLAGS:=
+QT_LIBS:=$(SUBLIBS)  -L/usr/lib/qt4/lib -lQtSql -L/usr/lib/mysql -lQtGui -lpng -lSM -lICE -lXi -lXrender -lXrandr -lXcursor -lXinerama -lfreetype -lfontconfig -lXext -lX11 -lQtNetwork -lQtCore -lz -lm -ldl -lpthread
